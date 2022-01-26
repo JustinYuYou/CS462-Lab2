@@ -1,0 +1,12 @@
+1. Did you accomplish step 5 with an event expression or a rule conditional statement? What are the advantages and disadvantages of the method you used compared with the other?
+I used event expression. The difference is that an a rule conditional statement will run when a rule is triggered. Whereras, the rule will only match when the event expression following it is true.
+
+2. Suppose you had multiple temperature sensors all sending temperatures to your pico. What would be the advantages of creating a separate channel for each sensor? 
+By setting up channels, we can know what event it is coming from from the channel id. It provides tracibility.
+
+3. What was the output of the testing your ruleset before the find_high_temps rule was added? How many directives were returned? How many rules do you think ran?
+4. What was the output of the test after the find_high_temps rule was added? How many directives were returned? How many rules do you think ran?
+5. How do you account for the difference? Diagram the event flow within the pico (i.e. show the event flow from when the pico receives the first event to the directives being created) using a swimlane diagram (Links to an external site.).
+6. Would you say that your find_high_temps rule is an event intermediary? If so, what kind? Justify your answer.
+Yes, it is. It is because it raises the event to another rule depending on if the condition is met or not.
+7. How do your logs show that the find_high_temps rule works? Pick out specific lines and explain them.
