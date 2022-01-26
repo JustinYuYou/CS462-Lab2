@@ -24,7 +24,7 @@ ruleset wovyn_base {
          raise wovyn event "new_temperature_reading"
             attributes {
                "temperature": event:attrs{"genericThing"}{"data"}{"temperature"}[0]{"temperatureF"},
-               "timestamp": event:attrs{"timestamp"}
+               "timestamp": event:time
             } 
       }
    }

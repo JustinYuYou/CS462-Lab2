@@ -5,8 +5,25 @@ I used event expression. The difference is that an a rule conditional statement 
 By setting up channels, we can know what event it is coming from from the channel id. It provides tracibility.
 
 3. What was the output of the testing your ruleset before the find_high_temps rule was added? How many directives were returned? How many rules do you think ran?
+Before we add find_high_temps rule, we will not raise the event to find the temperature that is over the threshold specified in find_high_temps.
+In my case, no directive is return and one rule is run.
+
 4. What was the output of the test after the find_high_temps rule was added? How many directives were returned? How many rules do you think ran?
+After we add find_high_temps rule, we are able to raise the event to threshold_notification to send text to the phone.
+In my case, no directive is return and one rule is run as well.
+
 5. How do you account for the difference? Diagram the event flow within the pico (i.e. show the event flow from when the pico receives the first event to the directives being created) using a swimlane diagram (Links to an external site.).
+diagram url: https://swimlanes.io/#dU9BbsMwDLv7FXrA9oEcCuwNfYDhJnQtwJECWUn2/DkpMAzteiMokiKdvWKgK6SpUa66h2CJGyJmdodFbBCnzwstpiNaiwXJ/IbkA/3C8HI8HJllioXvJTrmpQ0k2E8IS74aoiFNLPcQwpP0cHsxtKJ1iqLOmcfkrDL84TfWepIhdEmf8ZV7YzKM4K3ndin+k9O56ePNB7K1gnaulXrRrDafOWl0FiVXapDpEY1vP4gDL0UFJOt8g/U9Pw==
+After find_high_temps is added, we are able to raise the event if the threshold is infringed. 
+
 6. Would you say that your find_high_temps rule is an event intermediary? If so, what kind? Justify your answer.
 Yes, it is. It is because it raises the event to another rule depending on if the condition is met or not.
+It is a filter kind of event intermediary because it sends the event depending on the conditions.
+
 7. How do your logs show that the find_high_temps rule works? Pick out specific lines and explain them.
+
+21:26:23.181Z [DEBUG] rule selected wovyn_base : find_high_temps
+21:26:23.182Z [DEBUG] fired 
+21:26:23.182Z [DEBUG] event added to schedule {"eci":"ckyt7c3mz006nk1ml8l31gscr","domain":"wovyn","name":"threshold_violation","data":{"attrs":{"temperature":71.4,"timest
+
+The event is fired and raised the threshold_violation and can be seen from the log above. Because the find_high_temps is working, the event is raised correctly.
